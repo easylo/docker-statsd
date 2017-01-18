@@ -12,9 +12,10 @@ RUN apk update && \
     update-ca-certificates && \
     apk add openssl && \
     wget http://github.com/etsy/statsd/archive/v${STATSD_VERSION}.tar.gz && \
-    tar -xf v${STATSD_VERSION}.tar.gz
+    tar -xf v${STATSD_VERSION}.tar.gz && \
+    mv statsd-${STATSD_VERSION} statsd
 
 EXPOSE 8125/udp
 EXPOSE 8125
 EXPOSE 8126
-CMD ["node", "statsd-${STATSD_VERSION}/stats.js", "config.js"]
+CMD ["node", "statsd/stats.js", "config.js"]
