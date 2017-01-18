@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:base
+FROM node:4-alpine
 
 MAINTAINER Laurent RICHARD <easylo@gmail.com>
 
@@ -16,6 +16,6 @@ RUN apk update && \
     mv statsd-${STATSD_VERSION} statsd
 
 EXPOSE 8125/udp
-EXPOSE 8125
 EXPOSE 8126
+
 CMD ["node", "statsd/stats.js", "config.js"]
