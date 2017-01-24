@@ -7,7 +7,7 @@
     flushInterval: process.env.FLUSH || 10000,
     percentThreshold: process.env.PERCENTILE || [95, 99],
     repeater: process.env.REPEATER || [],
-    backends: process.env.BACKENDS || [],
+    backends: process.env.BACKENDS || ["./backends/graphite"],
     graphite: {
         legacyNamespace: false
     }
