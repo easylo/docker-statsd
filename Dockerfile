@@ -5,7 +5,6 @@ MAINTAINER Laurent RICHARD <easylo@gmail.com>
 ENV STATSD_VERSION 0.8.0
 
 WORKDIR /src
-ADD config.js /src/config.js
 
 RUN apk update && \
     apk add ca-certificates && \
@@ -18,4 +17,7 @@ RUN apk update && \
 EXPOSE 8125/udp
 EXPOSE 8126
 
-CMD ["node", "statsd/stats.js", "config.js"]
+WORKDIR /src/statsd
+ADD config.js /src/statsd/config.js
+
+CMD ["node", "stats.js", "config.js"]
